@@ -16,6 +16,7 @@ defmodule Web do
   below. Instead, define additional modules and import
   those modules here.
   """
+  use Boundary, deps: [BentoBoard]
 
   def static_paths, do: ~w(assets fonts images favicon.ico robots.txt)
 

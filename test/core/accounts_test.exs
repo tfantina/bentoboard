@@ -4,7 +4,7 @@ defmodule Core.AccountsTest do
   alias Core.Accounts
 
   import Core.AccountsFixtures
-  alias Core.Accounts.{User, UserToken}
+  alias Schema.Account.{User, UserToken}
 
   describe "get_user_by_email/1" do
     test "does not return the user if the email does not exist" do

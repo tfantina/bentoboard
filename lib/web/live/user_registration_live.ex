@@ -2,7 +2,7 @@ defmodule Web.UserRegistrationLive do
   use Web, :live_view
 
   alias Core.Accounts
-  alias Core.Accounts.User
+  alias Schema.Account.User
 
   def render(assigns) do
     ~H"""

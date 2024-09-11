@@ -1,16 +1,9 @@
-defmodule Core.Accounts.User do
-  use Ecto.Schema
+defmodule Core.Account.UserChanges do
+  @moduledoc """
+  Changesets for Users
+  """
+  alias Schema.Account.User
   import Ecto.Changeset
-
-  schema "users" do
-    field :email, :string
-    field :password, :string, virtual: true, redact: true
-    field :hashed_password, :string, redact: true
-    field :current_password, :string, virtual: true, redact: true
-    field :confirmed_at, :utc_datetime
-
-    timestamps(type: :utc_datetime)
-  end
 
   @doc """
   A user changeset for registration.
@@ -136,7 +129,7 @@ defmodule Core.Accounts.User do
   If there is no user or the user doesn't have a password, we call
   `Bcrypt.no_user_verify/0` to avoid timing attacks.
   """
-  def valid_password?(%Core.Accounts.User{hashed_password: hashed_password}, password)
+  def valid_password?(%User{hashed_password: hashed_password}, password)
       when is_binary(hashed_password) and byte_size(password) > 0 do
     Bcrypt.verify_pass(password, hashed_password)
   end

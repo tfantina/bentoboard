@@ -1,7 +1,9 @@
-defmodule Core.Accounts.UserToken do
-  use Ecto.Schema
+defmodule Core.Account.UserTokenChanges do
+  @moduledoc """
+  Changesets for UserToken
+  """
   import Ecto.Query
-  alias Core.Accounts.UserToken
+  alias Schema.Account.UserToken
 
   @hash_algorithm :sha256
   @rand_size 32
@@ -12,15 +14,6 @@ defmodule Core.Accounts.UserToken do
   @confirm_validity_in_days 7
   @change_email_validity_in_days 7
   @session_validity_in_days 60
-
-  schema "users_tokens" do
-    field :token, :binary
-    field :context, :string
-    field :sent_to, :string
-    belongs_to :user, Core.Accounts.User
-
-    timestamps(type: :utc_datetime, updated_at: false)
-  end
 
   @doc """
   Generates a token that will be stored in a signed place,

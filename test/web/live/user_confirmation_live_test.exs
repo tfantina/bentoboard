@@ -6,6 +6,7 @@ defmodule Web.UserConfirmationLiveTest do
 
   alias Core.Accounts
   alias Core.Repo
+  alias Schema.Account.UserToken
 
   setup do
     %{user: user_fixture()}
@@ -38,7 +39,7 @@ defmodule Web.UserConfirmationLiveTest do
 
       assert Accounts.get_user!(user.id).confirmed_at
       refute get_session(conn, :user_token)
-      assert Repo.all(Accounts.UserToken) == []
+      assert Repo.all(UserToken) == []
 
       # when not logged in
       {:ok, lv, _html} = live(conn, ~p"/users/confirm/#{token}")
