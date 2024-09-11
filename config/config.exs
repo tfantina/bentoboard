@@ -8,18 +8,18 @@
 import Config
 
 config :bento_board,
-  ecto_repos: [BentoBoard.Repo],
+  ecto_repos: [Core.Repo],
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
-config :bento_board, BentoBoardWeb.Endpoint,
+config :bento_board, Web.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [html: BentoBoardWeb.ErrorHTML, json: BentoBoardWeb.ErrorJSON],
+    formats: [html: Web.ErrorHTML, json: Web.ErrorJSON],
     layout: false
   ],
-  pubsub_server: BentoBoard.PubSub,
+  pubsub_server: Core.PubSub,
   live_view: [signing_salt: "+CgDRXUU"]
 
 # Configures the mailer
@@ -29,7 +29,7 @@ config :bento_board, BentoBoardWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :bento_board, BentoBoard.Mailer, adapter: Swoosh.Adapters.Local
+config :bento_board, Core.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,

@@ -1,12 +1,12 @@
-defmodule BentoBoardWeb do
+defmodule Web do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, components, channels, and so on.
 
   This can be used in your application as:
 
-      use BentoBoardWeb, :controller
-      use BentoBoardWeb, :html
+      use Web, :controller
+      use Web, :html
 
   The definitions below will be executed for every controller,
   component, etc, so keep them short and clean, focused
@@ -40,10 +40,10 @@ defmodule BentoBoardWeb do
     quote do
       use Phoenix.Controller,
         formats: [:html, :json],
-        layouts: [html: BentoBoardWeb.Layouts]
+        layouts: [html: Web.Layouts]
 
       import Plug.Conn
-      import BentoBoardWeb.Gettext
+      import Web.Gettext
 
       unquote(verified_routes())
     end
@@ -52,7 +52,7 @@ defmodule BentoBoardWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {BentoBoardWeb.Layouts, :app}
+        layout: {Web.Layouts, :app}
 
       unquote(html_helpers())
     end
@@ -84,8 +84,8 @@ defmodule BentoBoardWeb do
       # HTML escaping functionality
       import Phoenix.HTML
       # Core UI components and translation
-      import BentoBoardWeb.CoreComponents
-      import BentoBoardWeb.Gettext
+      import Web.CoreComponents
+      import Web.Gettext
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
@@ -98,9 +98,9 @@ defmodule BentoBoardWeb do
   def verified_routes do
     quote do
       use Phoenix.VerifiedRoutes,
-        endpoint: BentoBoardWeb.Endpoint,
-        router: BentoBoardWeb.Router,
-        statics: BentoBoardWeb.static_paths()
+        endpoint: Web.Endpoint,
+        router: Web.Router,
+        statics: Web.static_paths()
     end
   end
 

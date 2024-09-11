@@ -1,4 +1,4 @@
-defmodule BentoBoard.Repo.Migrations.CreateUsersAuthTables do
+defmodule Core.Repo.Migrations.CreateUsersAuthTables do
   use Ecto.Migration
 
   def change do
