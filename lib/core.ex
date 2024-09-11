@@ -1,4 +1,4 @@
-defmodule BentoBoard do
+defmodule Core do 
   @moduledoc """
   BentoBoard keeps the contexts that define your domain
   and business logic.
@@ -7,5 +7,6 @@ defmodule BentoBoard do
   if it comes from the database, an external API or others.
   """
 
-  use Boundary, deps: [Schema], exports: []
+  use Boundary, deps: [Schema]
 end
+ 
